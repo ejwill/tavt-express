@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130222223032) do
+ActiveRecord::Schema.define(:version => 20130225132202) do
 
   create_table "cars", :force => true do |t|
     t.string   "vin"
@@ -21,6 +21,23 @@ ActiveRecord::Schema.define(:version => 20130222223032) do
     t.integer  "value"
     t.string   "vid"
     t.string   "trim"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "plans", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.decimal  "price"
+    t.integer  "searches"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "plan_id"
+    t.integer  "user_id"
+    t.boolean  "active"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -38,6 +55,20 @@ ActiveRecord::Schema.define(:version => 20130222223032) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "business_name"
+    t.string   "doing_business_as"
+    t.string   "website_url"
+    t.string   "category"
+    t.integer  "avg_monthly_sales"
+    t.string   "tax_id"
+    t.string   "state"
+    t.string   "zip_code"
+    t.string   "address"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "plan_id"
+    t.string   "city"
+    t.boolean  "active"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

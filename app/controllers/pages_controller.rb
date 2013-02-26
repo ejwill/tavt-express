@@ -12,7 +12,9 @@ class PagesController < ApplicationController
           make: car.make,
           model: car.model,
           year: car.year,
-          value: car.value
+          value: car.value,
+          vid: car.vid,
+          trim: car.trim
         }
       }
     end

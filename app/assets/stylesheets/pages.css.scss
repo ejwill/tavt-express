@@ -2,9 +2,127 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+#car-lookup-wrapper {
+  margin-top: -60px;
+  padding: 60px 25px;
+  background: #2e3135;
+  color: darken(white, 10);
+  font: {
+    size: 12px;
+    family: 'Arial';
+  }
+}
+
+$car-container-width: 800px;
+.car-container {
+  margin: 0px auto;
+  margin-top: 45px;
+  width: $car-container-width;
+  height: 320px;
+}
+
+.car-lookup {
+  display: inline-block;
+  width: 450px;
+  line-height: 50px;
+  height: 250px;
+
+  .title {
+    margin-bottom: 15px;
+    font: {
+      size: 26px;;
+      weight: bold;
+    }
+  }
+
+  label[for=vin], label[for=year], label[for=model], label[for=make], label[for=trim], label[for=vid] {
+    display: inline-block;
+    font: {
+      size: 20px;
+    }
+  }
+
+  label[for=vid] {
+    margin-left: 15px;
+  }
+
+  label[for=make] {
+    margin-left: 15px;
+  }
+
+  label[for=vin] {
+    font-weight: bold;
+  }
+
+  label[for=year] {
+    margin-left: 15px;
+  }
+
+  input[name=vin], input[name=year], input[name=model], input[name=make], input[name=vid] {
+    display: inline-block;
+    margin-left: 8px;
+    width: 150px;
+    height: 18px;
+  }
+  
+  input[name=trim] {
+    margin-left: 8px;
+    width: 150px;
+  }
+
+  input[name=vid] {
+    width: 126px;
+  }
+
+  input[name=make] {
+    width: 110px;
+  }
+
+  input[name=vin] {
+  }
+
+  input[name=year] {
+    width: 62px;
+  }
+
+  input[name=model] {
+    width: 130px;
+  }
+
+  input[name=commit] {
+    display: block;
+    margin-top: 22px;
+    background: white;
+    height: 42px;
+    width: 410px;
+    border: 1px solid darken(white, 30);
+    font: {
+      weight: bold;
+      size: 18px;
+    }
+  }
+
+}
+
 .car-info {
+  vertical-align: top;
+  display: inline-block;
+  height: 210px;
+  width: 340px;
+  border: 1px solid lighten(black, 30);
+  background: darken(white, 5);
+  margin-top: 70px;
   li {
     list-style: none;
   }
 }
 
+.audit-log {
+  margin: 0px auto;
+  margin-top: 20px;
+  background: darken(white, 15);
+  width: 800px;
+  height: 200px;
+  border: 1px solid lighten(black, 25);
+}

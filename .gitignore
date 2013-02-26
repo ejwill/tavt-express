@@ -16,3 +16,6 @@
 
 /lib/*.pdf
 .rvmrc
+
+*.swp
+*.swo

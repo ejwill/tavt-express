@@ -1,17 +1,43 @@
-<div class="car-lookup">
-  <%= form_tag('search', :method => :get, :remote => true) do %>
-    <%= label_tag(:q, "Car lookup:") %>
-    <%= text_field_tag(:vin) %>
-    <%= submit_tag("Search") %>
-  <% end %>
-</div>
+<div id="car-lookup-wrapper">
+  <div class="car-container">
+    <div class="car-lookup">
+      <div class="title">Car Lookup</div>
+      <%= form_tag('search', :method => :get, :remote => true) do %>
+        <div>
+          <%= label_tag(:vin, "VIN") %>
+          <%= text_field_tag(:vin) %>
+          <%= label_tag(:vid, "VID") %>
+          <%= text_field_tag(:vid) %>
+        </div>
+        <div>
+          <%= label_tag(:model, "Model") %>
+          <%= text_field_tag(:model) %>
+          <%= label_tag(:make, "Make") %>
+          <%= text_field_tag(:make) %>
+        </div>
+        <div>
+          <%= label_tag(:trim, "Trim") %>
+          <%= text_field_tag(:trim) %>
+          <%= label_tag(:year, "Year") %>
+          <%= text_field_tag(:year) %>
+        </div>
+        <%= submit_tag("Search") %>
+      <% end %>
+    </div>
 
-<div class="car-info">
-  <ul>
-    <li>Make: <span class="make"></span></li>
-    <li>Model: <span class="model"></span></li>
-    <li>Year: <span class="year"></span></li>
-    <li>VIN: <span class"vin"></span></li>
-    <li>Value: <span class="value"></span></li>
-  </ul>
+    <div class="car-info">
+      <ul>
+        <li>Make: <span class="make"></span></li>
+        <li>Model: <span class="model"></span></li>
+        <li>Trim: <span class="trim"></span></li>
+        <li>Year: <span class="year"></span></li>
+        <li>VIN: <span class"vin"></span></li>
+        <li>VID: <span class"vid"></span></li>
+        <li>Value: <span class="value"></span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="audit-log"></div>
+
 </div>

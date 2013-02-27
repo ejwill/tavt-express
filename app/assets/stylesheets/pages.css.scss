@@ -107,20 +107,43 @@ $car-container-width: 800px;
 
 .car-info {
   vertical-align: top;
+  padding: 6px 10px;
   display: inline-block;
-  height: 210px;
-  width: 340px;
+  height: 190px;
+  width: 320px;
+  color: lighten(black, 10);
   border: 1px solid lighten(black, 30);
   background: darken(white, 5);
   margin-top: 70px;
+
+  .match {
+    display: block;
+    font: {
+      weight: bold;
+      size: 14px;
+    }
+    margin-bottom: 6px;
+  }
+
+  ul {
+    padding: 5px;
+    margin: 0;
+    border: 1px solid black;
+  }
+
   li {
+    display: inline-block;
     list-style: none;
+  }
+
+  .value, .vin, .vid {
+    font-weight: bold;
   }
 }
 
 .audit-log {
   margin: 0px auto;
-  margin-top: 20px;
+  margin-top: 5px;
   background: darken(white, 15);
   width: 800px;
   height: 200px;

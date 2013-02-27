@@ -28,16 +28,18 @@ module CarParser
   end
 
   def car?(line)
-    data = line.match(/(?<year>\d{,2})(?<trim>.+)\s+(?<vin>(\w\s{,1}){8}-\w)\s+(?<vid>.{6})\s+(?<value>\d+)/)
+    data = line.match(/(?<year>\d{,2})(?<trim>.+)\s+(?<vin>([\w-]\s{,1}){8}-\w)\s+(?<vid>.{6})\s+(?<value>\d+)/)
 
     if data
       @cur_year = data[:year] if !data[:year].empty?
+      vin = data[:vin].sub(" ", "")
+      sanitized_vin = vin[0..7].gsub('-','*') + vin[8..-1]
       cars << Car.new(id: id, 
                       make:  cur_make,
                       model: cur_model,
                       year:  cur_year,
-                      trim:  data[:trim].strip,
-                      vin:   data[:vin].sub(" ", ""),
+                      trim:  data[:trim].strip.gsub('-', '*'),
+                      vin:   sanitized_vin,
                       vid:   data[:vid],
                       value: data[:value])
       @id = @id + 1

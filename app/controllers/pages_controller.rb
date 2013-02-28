@@ -6,8 +6,7 @@ class PagesController < ApplicationController
 
   def search
     vin = Car.fuzzy_vin.find(params[:vin]) 
-    cars = Car.search(vin)
-    car = cars.to_a[0] # To-do: loop through car_arr
+    car = Car.find_by_vin(vin)
 
     respond_to do |format|
       format.json {

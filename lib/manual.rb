@@ -14,13 +14,14 @@ class Manual
 
   def extract_data(range)
     read_pages(range)
-    pages.each do |page|
+    pages.each_with_index do |page,i|
       parse_page(page)
+      puts "Parsed page ##{i}"
     end
   end
 
   def read_pages(range)
-    reader.pages.take(range).each do |page|
+    reader.pages[range].each do |page|
       text = reshape_text(page.text)
       pages.push(text)
     end
@@ -28,10 +29,21 @@ class Manual
 
   # reshape the block of text so that only one column exists
   def reshape_text(raw_text)
+    start_point = determine_second_column_start(raw_text)
+    return raw_text.lines.entries.slice(3..5) if start_point == 0 # the page only has one column
     temp = []
     raw_text.lines.entries.slice(3..-5).each do |line|
-      temp << line.slice!(50..-1)
+      temp << line.slice!(start_point..-1)
     end.entries.concat(temp)
+  end
+
+  def determine_second_column_start(raw_text)
+    lines = raw_text.lines.entries
+    index = lines.find_index do |line|
+      !line.match(/AUTOMOBILES|LIGHT DUTY TRUCKS|MOTORCYCLES/).nil?
+    end
+    line = lines[index]
+    line.rindex(/AUTOMOBILES|LIGHT DUTY TRUCKS|MOTORCYCLES/)
   end
 
 end

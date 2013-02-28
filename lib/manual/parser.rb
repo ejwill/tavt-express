@@ -17,13 +17,15 @@ module CarParser
 
   def make?(line)
     return @cur_make = line.sub("AUTOMOBILES","").strip if line.match(/AUTOMOBILES/)
+    return @cur_make = line.sub("LIGHT DUTY TRUCKS","").strip if line.match(/LIGHT DUTY TRUCKS/)
+    return @cur_make = line.sub("MOTORCYCLES","").strip if line.match(/MOTORCYCLES/)
     return false
   end
 
   def model?(line)
-    return false if line.match(/(AUTOMOBILES|-{43}|_{43}|Yr Model)/)
+    return false if line.match(/(AUTOMOBILES|LIGHT DUTY TRUCKS|MOTORCYCLES|-{43}|_{43}|Yr Model)/)
 
-    match_data = line.strip.match(/([\w\s]+)/)
+    match_data = line.strip.match(/([\w\s]+)/) 
     @cur_model = match_data[0].sub("continued", "").strip
   end
 
@@ -34,8 +36,7 @@ module CarParser
       @cur_year = data[:year] if !data[:year].empty?
       vin = data[:vin].sub(" ", "")
       sanitized_vin = vin[0..7].gsub('-','*') + vin[8..-1]
-      cars << Car.new(id: id, 
-                      make:  cur_make,
+      cars << Car.new(make:  cur_make,
                       model: cur_model,
                       year:  cur_year,
                       trim:  data[:trim].strip.gsub('-', '*'),
